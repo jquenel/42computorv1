@@ -1,11 +1,14 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3.6
 
 import sys
 import computor
+from computor.parser import expr_parse
 
 def computorv1(expr : str):
 	try:
 		tokens = computor.lexer(expr)
+		parsed = expr_parse(tokens)
+		print(parsed)
 	except computor.InputError as err:
 		print(err)
 		sys.exit()

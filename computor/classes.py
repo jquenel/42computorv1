@@ -12,6 +12,9 @@ class PNTerm:
 
 	def __str__(self):
 		return f'{self.coef}*X^{self.degree}'
+
+	def __repr__(self):
+		return f'PNterm({self.coef}, {self.degree})'
 	
 	def __add__(self, other):
 		if self.degree != other.degree:
