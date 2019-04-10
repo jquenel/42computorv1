@@ -1,22 +1,23 @@
 
 class CTokens:
 	variable =		'X'
-	plus_sign =		'+'
-	minus_sign =	'-'
-	operators = [plus_sign, minus_sign]
+	variable_alt =	'x'
+	addop =		'+'
+	subop =		'-'
+	mulop =		'*'
+	divop =		'/'
+	operators = [addop, subop, mulop, divop]
 	pow_sign =		'^'
 	equal_sign =	'='
 	numbers =		'0123456789'
 	valid_tokens =	[
 					variable,
-					plus_sign,
-					minus_sign,
-					mul_sign,
-					div_sign,
+					variable_alt,
 					pow_sign,
 					equal_sign,
 					open_par,
 					close_par,
 					]
+	valid_tokens += operators
 	for n in numbers:
 		valid_tokens.append(n)

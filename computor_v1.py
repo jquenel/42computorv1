@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 
 import sys
-import src
+import computor
 
 def computorv1(expr : str):
 	try:
-		tokens = src.computorLexer(expr)
-	except src.InputError as err:
+		tokens = computor.lexer(expr)
+	except computor.InputError as err:
 		print(err)
 		sys.exit()
 
