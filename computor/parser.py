@@ -30,7 +30,13 @@ def parser():
 			right[0].coef *= -1
 		for term in right:
 			term.coef *= -1
-		return left + right
+		polynomial = left + right
+		for term in reversed(polynomial):
+			if term.degree is None:
+				return None
+			if term.coef == 0:
+				polynomial.remove(term)
+		return polynomial
 
 	return Phrase(full_expr()) ^ process_full_expr
 
@@ -64,7 +70,7 @@ def variable_part():
 	def check_validity(parsed):
 		(__, deg_part) = parsed
 		if deg_part is None:
-			return 0
+			return 1
 		else:
 			(value, valid) = deg_part
 			return value if valid else None

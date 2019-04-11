@@ -1,19 +1,24 @@
 #!/usr/bin/env python3.6
 
 import sys
-import computor
-from computor.parser import expr_parse
+from computor import *
 
 def computorv1(expr : str):
+	polynomial = Polynomial(expr)
 	try:
-		tokens = computor.lexer(expr)
+		tokens = lexer(expr)
 		parsed = expr_parse(tokens)
-		print(parsed)
-	except computor.InputError as err:
+		if parsed is None or parsed.value is None:
+			raise ParseError()
+		polynomial.terms = parsed.value
+	except (InputError, ParseError) as err:
 		print(err)
 		sys.exit()
-
-	print(tokens)
+	print(polynomial.terms)
+	polynomial.reduced = polynomial.reduce()
+	print(polynomial.terms)
+	print(polynomial.reduced)
+	
 
 if __name__ == '__main__':
 	if len(sys.argv) != 2:
