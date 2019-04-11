@@ -76,7 +76,7 @@ class Exp(Parser):
 		def process_next(parsed):
 			(sepfunc, right) = parsed
 			return sepfunc(result.value, right)
-		next_parser = self.parser + self.separator ^ process_next
+		next_parser = self.separator + self.parser ^ process_next
 
 		next_result = result
 		while next_result:
