@@ -81,4 +81,12 @@ def degree_expr():
 	def format_degree(parsed):
 		(__, value) = parsed
 		return value
-	return (keyword('^') + int_) ^ format_degree
+	
+	def format_signed_degree(parsed):
+		sign, value = parsed
+		if sign == '-':
+			(l, r) = value
+			value = (l * -1, r)
+		return value
+
+	return (keyword('^') + ((term_sign + int_) ^ format_signed_degree | int_)) ^ format_degree
