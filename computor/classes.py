@@ -69,14 +69,9 @@ class Polynomial:
 				reduced += '+ '
 			if term.coef < 0:
 				reduced += '- ' if i > 0 else '-'
-				if term.coef != -1 or term.degree == 0:
-					reduced += f'{abs(term.coef)}'
-			elif term.coef != 1:
+				reduced += f'{abs(term.coef)}'
+			else:
 				reduced += f'{term.coef}'
-			if term.coef != 1 and term.coef != -1:
-				reduced += '*'
-			reduced += 'X'
-			reduced += f'^{term.degree}'
-			reduced += ' '
+			reduced += f'*X^{term.degree} '
 		reduced += '= 0'
 		return reduced
