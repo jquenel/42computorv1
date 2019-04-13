@@ -27,7 +27,6 @@ class PNTerm:
 	def __div__(self, other):
 		return PNTterm(self.coef / other.coef, self.degree - other.degree)
 
-
 class PolynomialError(Exception):
 	def __init__(self, err):
 		self.err = err
@@ -48,22 +47,21 @@ class Polynomial:
 		for rterm in reversed(self.terms):
 			for t in self.terms:
 				if not (t is rterm) and t.degree == rterm.degree:
-					rterm += t
+					rterm.coef += t.coef
 					self.terms.remove(t)
 		self.terms.sort(reverse=True, key=lambda t : t.degree)
-		lowest_degree = self.terms[-1].degree
-		if lowest_degree > 0:
-			for t in self.terms:
-				t.degree -= lowest_degree
-			self.solutions.append(0)
+		for term in reversed(self.terms):
+			if term.coef == int(term.coef):
+				term.coef = int(term.coef)
+			term.degree = int(term.degree)
+			if term.coef == 0:
+				self.terms.remove(term)
 		return self._format_terms()
 
 	def _format_terms(self) -> str:
 		reduced = ''
-		for term in self.terms:
-			if term.coef == int(term.coef):
-				term.coef = int(term.coef)
-			term.degree = int(term.degree)
+		if len(self.terms) == 0:
+			return '0 = 0'
 		for i, term in enumerate(self.terms):
 			if i > 0 and term.coef > 0:
 				reduced += '+ '
@@ -73,12 +71,10 @@ class Polynomial:
 					reduced += f'{abs(term.coef)}'
 			elif term.coef != 1:
 				reduced += f'{term.coef}'
-			if term.degree > 0:
-				if term.coef != 1 and term.coef != -1:
-					reduced += '*'
-				reduced += 'X'
-			if term.degree > 1:
-				reduced += f'^{term.degree}'
+			if term.coef != 1 and term.coef != -1:
+				reduced += '*'
+			reduced += 'X'
+			reduced += f'^{term.degree}'
 			reduced += ' '
 		reduced += '= 0'
 		return reduced

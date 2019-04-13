@@ -59,10 +59,14 @@ def term():
 	def format_single_coef(value):
 		return (value, 0)
 	
+	def format_coef(parsed):
+		value, __ = parsed
+		return value
+	
 	def build_term(parsed):
 		(coef, degree) = parsed
 		return [PNTerm(coef, degree)]
-	full_term = Opt(coef) + variable_part()
+	full_term = (Opt(coef + Opt(keyword('*'))) ^ format_coef) + variable_part()
 	single_coef = coef ^ format_single_coef
 	return (full_term | single_coef) ^ build_term
 
