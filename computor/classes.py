@@ -38,8 +38,10 @@ class Polynomial:
 	def __init__(self, source):
 		self.source = source
 		self.reduced = None
-		self.solutions = []
 		self.terms = None
+	
+	def __len__(self):
+		return len(self.terms)
 	
 	def reduce(self) -> str:
 		if self.terms is None:

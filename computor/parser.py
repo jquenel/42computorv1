@@ -60,8 +60,11 @@ def term():
 		return (value, 0)
 	
 	def format_coef(parsed):
-		value, __ = parsed
-		return value
+		if parsed:
+			value, __ = parsed
+			return value
+		else:
+			return 1
 	
 	def build_term(parsed):
 		(coef, degree) = parsed
