@@ -46,11 +46,12 @@ class Polynomial:
 	def reduce(self):
 		if self.terms is None:
 			raise ReduceError('No terms for reduce. Aborting.')
-		for rterm in reversed(self.terms):
-			for t in self.terms:
-				if not (t is rterm) and t.degree == rterm.degree:
-					rterm.coef += t.coef
-					self.terms.remove(t)
+		for term in self.terms:
+			for rt in reversed(self.terms):
+				if not (term is rt) and term.degree == rt.degree:
+					term.coef += rt.coef
+					self.terms.remove(rt)
+
 		self.terms.sort(reverse=True, key=lambda t : t.degree)
 		for term in reversed(self.terms):
 			if term.coef == int(term.coef):

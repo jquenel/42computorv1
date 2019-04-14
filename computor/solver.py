@@ -3,8 +3,11 @@ from computor import Polynomial
 def solve(polynomial : Polynomial) -> tuple:
 	for term in polynomial.terms:
 		if term.degree != int(term.degree):
-			return [], f'''Non integer degree for monomial {term}.
-\nI can\'t solve it !'''
+			print(f'Non integer degree in expression {term}. This is not a polynomial.')
+			if len(polynomial.terms) == 1 and term.degree > 0:
+				return [(0, None)], '\nI can still find a solution :' 
+			else:
+				return [], '\nI can\'t solve it !'
 	if len(polynomial) == 0:
 		return zero_term_solution()
 	elif len(polynomial) == 1:
@@ -23,7 +26,7 @@ def zero_term_solution():
 
 def one_term_solution(polynomial):
 	if polynomial.terms[0].degree <= 0:
-		return [], 'This is not a polynomial (degree 0). There is no solution.'
+		return [], 'This is not a polynomial (degree 0 or less). There is no solution.'
 	else:
 		print(f'This is a polynomial of degree {polynomial.terms[0].degree}')
 		return [(0, None)], '\nThe solution is :'
