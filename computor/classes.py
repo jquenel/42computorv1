@@ -43,7 +43,7 @@ class Polynomial:
 	def __len__(self):
 		return len(self.terms)
 	
-	def reduce(self) -> str:
+	def reduce(self):
 		if self.terms is None:
 			raise ReduceError('No terms for reduce. Aborting.')
 		for rterm in reversed(self.terms):
@@ -58,9 +58,8 @@ class Polynomial:
 			term.degree = int(term.degree)
 			if term.coef == 0:
 				self.terms.remove(term)
-		return self._format_terms()
 
-	def _format_terms(self) -> str:
+	def format_terms(self) -> str:
 		reduced = ''
 		if len(self.terms) == 0:
 			return '0 = 0'

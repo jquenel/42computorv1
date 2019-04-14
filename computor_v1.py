@@ -14,23 +14,22 @@ def computorv1(expr : str):
 	except (InputError, ParseError) as err:
 		print(err)
 		sys.exit()
-	polynomial.reduced = polynomial.reduce()
-	solutions = solve(polynomial)
+	polynomial.reduce()
+	polynomial.reduced = polynomial.format_terms()
 	print("Reduced polynomial :")
 	print(polynomial.reduced)
+	solutions = solve(polynomial)
 	if solutions is not None:
 		print(solutions[1])
 		if solutions[0] is not None:
 			for s in solutions[0]:
 				if s[0] is not None:
 					if s[1] is not None:
-						print(s[0], '		||   ', s[1])
+						print(s[1], '		≈	', s[0])
 					else:
 						print(s[0])
 				else:
 					print(s[1])
-
-	
 
 if __name__ == '__main__':
 	if len(sys.argv) != 2:
