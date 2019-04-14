@@ -21,6 +21,7 @@ def one_term_solution(polynomial):
 	if polynomial.terms[0].degree <= 0:
 		return [], 'This is not a polynomial (degree 0). There is no solution.'
 	else:
+		print(f'This is a polynomial of degree {polynomial.terms[0].degree}')
 		return [(0, None)], '\nThe solution is :'
 
 def first_degree_solution(polynomial):
