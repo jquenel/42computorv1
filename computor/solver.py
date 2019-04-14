@@ -1,6 +1,10 @@
 from computor import Polynomial
 
 def solve(polynomial : Polynomial) -> tuple:
+	for term in polynomial.terms:
+		if term.degree != int(term.degree):
+			return [], f'''Non integer degree for monomial {term}.
+\nI can\'t solve it !'''
 	if len(polynomial) == 0:
 		return zero_term_solution()
 	elif len(polynomial) == 1:
@@ -47,7 +51,9 @@ def sqrt(n):
 	while x * x > n:
 		x /= 2
 	i = 0
-	while x * x != n and i < 100:
+	prev_x = None
+	while x * x != n and prev_x != x and i < 10000:
+		prev_x = x
 		x = (x + (n / x)) / 2
 		i += 1
 	if x == int(x):

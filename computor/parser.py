@@ -80,7 +80,7 @@ def variable_part():
 			return 1
 		else:
 			(value, valid) = deg_part
-			return value if valid else None
+			return value #if valid else None
 
 	return (variable + Opt(degree_expr())) ^ check_validity
 

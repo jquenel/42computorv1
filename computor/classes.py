@@ -55,7 +55,8 @@ class Polynomial:
 		for term in reversed(self.terms):
 			if term.coef == int(term.coef):
 				term.coef = int(term.coef)
-			term.degree = int(term.degree)
+			if term.degree == int(term.degree): 
+				term.degree = int(term.degree)
 			if term.coef == 0:
 				self.terms.remove(term)
 

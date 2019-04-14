@@ -26,7 +26,7 @@ def get_numeric_token(line : str, i : int, chars : list) -> str:
 	j = i
 	while j < len(line) and (line[j] in chars or line[j] == '.'):
 		if j - i > 12:
-			raise InputError('Number too large to compute with precision')
+			raise InputError('Number phrase too large to compute with precision')
 		if line[j] == '.':
 			if decimal:
 				raise InputError(f'Invalid number syntax : "{line[i : j + 1]}"')

@@ -25,9 +25,9 @@ def computorv1(expr : str):
 			for s in solutions[0]:
 				if s[0] is not None:
 					if s[1] is not None:
-						print(s[1], '		≈	', s[0])
+						print(s[1], '		≈	', "%.7g" % s[0])
 					else:
-						print(s[0])
+						print("%.7g" % s[0])
 				else:
 					print(s[1])
 
