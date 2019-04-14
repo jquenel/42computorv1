@@ -1,8 +1,3 @@
-#
-# Joackim Quenel
-# jquenel@student.42.fr
-#
-
 class Result:
 	def __init__(self, value, pos):
 		self.value = value

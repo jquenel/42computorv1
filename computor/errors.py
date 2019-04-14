@@ -10,8 +10,8 @@ class TokenError(SyntaxError):
 
 class ParseError(SyntaxError):
 	def __str__(self):
-		return 'Incorrect sequence while parsing terms. \
-Please check your syntax and try again.'
+		return '''Incorrect or incomplete sequence while parsing terms.
+Please check your syntax and try again.'''
 
 class InputError(SyntaxError):
 	def __init__(self, errMessage : str = None):

@@ -1,8 +1,3 @@
-#	EXPERT SYSTEM
-#
-#	ecole 42
-#	Joackim Quenel
-
 from computor.errors import InputError, TokenError
 
 def lexer(expr : str) -> dict:

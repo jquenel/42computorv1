@@ -1,8 +1,3 @@
-#	EXPERT SYSTEM
-#
-#	ecole 42
-#	Joackim Quenel
-
 from computor.combinators import *
 from computor.classes import PNTerm
 
