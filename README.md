@@ -1,1 +1,3 @@
 # computorv1
+
+todo : push commits from finished project on 42school machine...
